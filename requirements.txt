@@ -1,0 +1,18 @@
+# LLM & OpenAI SDK
+openai
+openai-agents
+
+# Environment Variables
+python-dotenv
+
+# PDF Reader
+pymupdf
+
+# Vector Database
+chromadb
+
+# Token Counting 
+tiktoken
+
+# Progress Bar
+tqdm
