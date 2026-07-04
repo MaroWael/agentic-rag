@@ -1,28 +1,19 @@
-from pathlib import Path
+import asyncio
 
-from rag.document_processor import DocumentProcessor
-from rag.text_chunker import TextChunker
-from rag.vector_store import VectorStore
+from agents import Runner
 
-processor = DocumentProcessor()
-chunker = TextChunker(chunk_size=100, overlap=20)
-vector_store = VectorStore()
+from agent import study_agent
 
-documents = processor.process(Path("library/ml.pdf"))
 
-all_chunks = []
+async def main():
 
-for document in documents:
-    all_chunks.extend(
-        chunker.chunk(document)
+    result = await Runner.run(
+        study_agent,
+        input="What is Reinforcement Learning?"
     )
 
-vector_store.add(all_chunks)
+    print(result.final_output)
 
-print(f"Stored {len(all_chunks)} chunks.")
 
-results = vector_store.search(
-    "What is Reinforcement learning?"
-)
-
-print(results)
+if __name__ == "__main__":
+    asyncio.run(main())

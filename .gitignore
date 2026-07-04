@@ -35,3 +35,6 @@ Thumbs.db
 chroma/
 *.sqlite3
 *.db
+
+# Enviroment Varaibles
+.env
